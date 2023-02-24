@@ -10,14 +10,11 @@
 #include "util.h"
 #include "schedule.h"
 
-
 /*
  * TODO: Split Momentum classes into own file without dependency errors
  */
 
-
-//enum class Momentum { none, momentum, nesterov };
-enum class Initialization { Even, Stamp, Random };
+enum class Initialization { even, stamp, random };
 
 class MomentumSchedule;
 class Callback;
@@ -63,9 +60,6 @@ public:
 
 	double s_entropy();
 
-
-
-
 private:
 	void initializeMatrix(std::vector<std::vector<double>>& matrix, Initialization dist, int seed);
 
@@ -101,7 +95,6 @@ private:
 	friend class Callback;
 	friend class Momentum;
 
-
 	// For GD.  Need to add momentum class integration for GD still.
 	void updateGradientDescentWeightsA(std::vector<std::vector<double>>& weightsA, double lr, double temp, double momentum);
 	void updateGradientDescentWeightsB(std::vector<std::vector<double>>& weightsB, double lr, double temp, double momentum, std::vector<int>& O);
@@ -117,8 +110,6 @@ private:
 	std::vector<std::vector<double>> prevB;
 	std::vector<std::vector<double>> prevPi;
 };
-
-
 
 
 
@@ -146,9 +137,6 @@ protected:
 private:
 	//HMM& _hmm;
 };
-
-
-
 
 
 

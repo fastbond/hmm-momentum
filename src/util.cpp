@@ -1,6 +1,8 @@
 #include "util.h"
 
 
+// Yes these should probably be in a separate file as part of a matrix class,
+// but making the class would have taken more time than it would have saved
 void printMatrix(const std::vector<std::vector<double>>& matrix) {
 	for (auto row : matrix) {
 		for (double col : row) {
@@ -10,8 +12,6 @@ void printMatrix(const std::vector<std::vector<double>>& matrix) {
 	}
 	printf("\n");
 }
-
-
 
 void saveMatrix(const std::vector<std::vector<double>>& matrix, const std::string& fname) {
 	FILE* file = openFile(fname, "w");
@@ -28,7 +28,6 @@ void saveMatrix(const std::vector<std::vector<double>>& matrix, const std::strin
 	fprintf(file, "\n");
 	fclose(file);
 }
-
 
 std::vector<std::vector<double>> loadMatrix(const std::string& filename) {
 	std::vector<std::vector<double>> matrix;

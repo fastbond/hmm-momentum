@@ -1,9 +1,12 @@
+"""
+
+Script to compute and plot various stats for opcode text files separated into various families.
+
+"""
+
 import os
 import matplotlib.pyplot as plt
-
 from save import save_csv
-
-
 
 
 def get_families(list_file):
@@ -29,8 +32,6 @@ def count_opcodes(opcode_counts_list):
         for k,v in opcode_count_map.items():
             total += v
     return total
-    
-
     
 
 def malware_opcodes():

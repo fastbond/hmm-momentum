@@ -6,15 +6,12 @@ class Momentum;
 class HMM;
 
 /*
-
-
 At the beginning of every epoch, this callback gets the updated learning rate value 
 from schedule function provided at __init__, with the current epoch and current learning rate, 
 and applies the updated learning rate on the optimizer.
 
 At start of each iter, take iter and current momentum and set HMM momentum based on a function
 */
-
 
 
 //Not the greatest design but I'm tired and low on time
@@ -36,6 +33,7 @@ public:
 };
 
 
+// Skip applying momentum for first m iterations
 class SkipNSchedule : public MomentumSchedule {
 public:
 	SkipNSchedule(int iters);
@@ -46,6 +44,8 @@ public:
 };
 
 
+// Disable momentum during a period of iterations
+// Could likely be rolled into SkipN
 class DisableSchedule : public MomentumSchedule {
 public:
 	DisableSchedule(int _start, int _end);
@@ -57,8 +57,7 @@ public:
 
 };
 
-
-
+//Skip first iteration and disable for rest.  Really should be rolled into others but time issues
 class Skip1DisableSchedule : public MomentumSchedule {
 public:
 	Skip1DisableSchedule(int _start, int _end);
@@ -71,7 +70,7 @@ public:
 };
 
 
-
+// Like ReduceLRonPlateau in GD, attempt to adjust momentum when training stalls
 class ReduceMomentumOnPlateau : public MomentumSchedule {
 public:
 	ReduceMomentumOnPlateau(int _patience, double _factor, int _delay);
@@ -89,7 +88,7 @@ public:
 
 
 
-
+// Adjust momentum based on "entropy" calculation
 class EntropySchedule : public MomentumSchedule {
 public:
 	EntropySchedule(double factor, double threshold);

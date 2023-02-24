@@ -1,5 +1,4 @@
-import numpy as np
-
+#import numpy as np
 
 #numpy.savetxt(fname, X, delimiter=' ', header='')
 def save_csv(vectors, filename, headers=[]):       

@@ -1,8 +1,13 @@
+"""
+
+Script using objdump to bulk extract opcodes from executable files.
+
+"""
+
 import subprocess
 from os import listdir
 from os.path import isfile, join
 import os
-#from os import walk
 import re
 
 

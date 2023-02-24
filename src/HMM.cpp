@@ -1,6 +1,11 @@
 #include "HMM.h"
 
 
+/*
+ * TODO: Solve dependency error and move Callback/Momentum classes to separate files
+ */
+
+
 
 /*
  * Constructors
@@ -236,6 +241,7 @@ std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsi
 			for (int t = 0; t < O_T; t++)
 				logProb += log(constants[t]);
 
+			//TODO: Move reestimation into own functions
 			//Estimate Pi
 			for (int i = 0; i < N; i++)
 				numerPi[i] += gammas[0][i];
@@ -352,8 +358,6 @@ void HMM::updateB(std::vector<std::vector<double>> numers, std::vector<double> d
 		}
 	}
 }
-
-
 
 
 
@@ -622,7 +626,7 @@ void HMM::normalize(std::vector<double>& vec) {
 
 
 
-
+// Train via Gradient descent.  Somewhat working, but WIP
 std::vector<double> HMM::trainGD(std::vector<int>& observations, unsigned int max_iters, double lr, double momentum, double temp, 
 									bool trainA, bool trainB, bool trainPi, bool useNesterov) {
 

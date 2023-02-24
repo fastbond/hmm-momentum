@@ -1,3 +1,10 @@
+"""
+
+Plot mean, min, max scores during training given training history files, 
+as well as the differences between values for two sets of scores.
+
+"""
+
 import matplotlib.pyplot as plt
 import os
 import sys
@@ -9,11 +16,16 @@ from math import sqrt
 
 np.set_printoptions(suppress=True)
 
+
+
+# Create the given directory if it doesn't already exist.
+# Creates all folders in path that do not exist.
 def init_dir(path):
     directory = os.path.dirname(path)
     if not os.path.isdir(directory): 
         os.makedirs(directory)
     
+
 
 #Plot mean of each history in histories on a single plot
 def plotHistories(histories, title, func='mean', iters=None, outfile=None, xlim=None, ylim=None, margin_factor=1.00, show=False): 
@@ -335,13 +347,8 @@ def main():
     
     description = ""
     filename = "{:d}_hmmM_{:.6f}.csv"
-    #data_dir = "output/text/is_skipping_first_iter_needed/"   #may need multiple data_dir, momentum, etc
-    #data_dir = "output/text/fucked/rand/13/"   #may need multiple data_dir, momentum, etc
-    #data_dir = "output/text/test/T/default/"   #may need multiple data_dir, momentum, etc
-    #data_dir = "output/text/test/momentumRewrite/plateau/"   #may need multiple data_dir, momentum, etc
     data_dir = "results/text/report/plateau T=10000/"
     output_dir = "results/plots/text/test/"
-    #output_dir = data_dir + 'csv/'
     
     if not os.path.isdir(data_dir):
         print("NO DATA FOUND")
@@ -350,18 +357,10 @@ def main():
     baseline = History(description="momentum=0.0")
     #baseline.load(data_dir + "T=1000 N=27 M=27 m=0.5 Nesterov=1 smooth=0 SKIP 1" + '/', "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
     #baseline.load(data_dir + "T=10000 N=27 M=27 m=0.5 Nesterov=1 smooth=0 FIXED PI/", "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
-    #baseline.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 0/", "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
-    #baseline.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 1/", "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
-    #baseline.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 50 to 100/", "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
-    #baseline.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 1 50 to 100/", "{:d}_hmmM_0.000000.csv", range(first_restart, last_restart))
-    
+
     mom = History(description="momentum=0.9")
     #mom.load(data_dir + "T=1000 N=27 M=27 m=0.5 Nesterov=1 smooth=0 SKIP 1/", "{:d}_hmmM_0.500000.csv", range(first_restart, last_restart))
     #mom.load(data_dir + "T=10000 N=27 M=27 m=0.5 Nesterov=1 smooth=0 FIXED PI/", "{:d}_hmmM_0.500000.csv", range(first_restart, last_restart))
-    #mom.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 0/", "{:d}_hmmM_0.900000.csv", range(first_restart, last_restart))
-    #mom.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 1/", "{:d}_hmmM_0.900000.csv", range(first_restart, last_restart))
-    #mom.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 50 to 100/", "{:d}_hmmM_0.900000.csv", range(first_restart, last_restart))
-    #mom.load(data_dir + "T=10000 N=27 M=27 m=0.9 Nesterov=0 smooth=0 SKIP 1 50 to 100/", "{:d}_hmmM_0.900000.csv", range(first_restart, last_restart))
     
     #nesterov = History(description="nesterov=0.5")
     #nesterov.load(data_dir + "T=10000 N=27 M=27 Nesterov=1 divby10 1 to 50/", "{:d}_hmmM_0.500000.csv", range(first_restart, last_restart))
@@ -419,13 +418,6 @@ def main():
 
 
 
-    
-    
-    
-    
-    
-    
-    
 
 
 if __name__ == "__main__":

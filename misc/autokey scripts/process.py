@@ -1,3 +1,13 @@
+"""
+
+Autokey script to automate bulk analyzing of executables using the free GUI version of IDA.
+Only the paid versions allow headless/batch processing, and since they wouldn't provide 
+a copy through the school, this was the only way to process 50k+ malware executables using IDA.
+
+Quite janky due to weird Autokey bugs, IDA GUI oddities, rare popups/error messages, etc.
+
+"""
+
 import os
 import time
 import shutil

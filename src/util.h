@@ -24,8 +24,7 @@ double direction(double x1, double x2, double threshold);
 
 FILE* openFile(const std::string& fname, const std::string& rwType);
 
-
-// Defined here to avoid compilation error I don't understand
+// Defined here to avoid compilation error I don't fully understand
 //https://stackoverflow.com/questions/11512674/error-lnk2019-unresolved-external-symbol-when-using-templates
 //template <class T> int find(T val, const std::vector<T>& list);
 //inline

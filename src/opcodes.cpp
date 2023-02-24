@@ -33,7 +33,6 @@ std::map<std::string, int> getOpcodeMap(std::string& data_dir, std::vector<std::
 }
 
 
-
 /*
  * Assign opcodes to indices based on the counts for each opcode in opcodeCounts.
  *
@@ -63,7 +62,6 @@ std::map<std::string, int> assignOpcodes(const std::map<std::string, int>& opcod
 
 	return opcodeMap;
 }
-
 
 
 
@@ -106,10 +104,6 @@ std::vector<std::vector<std::vector<int>>> getObservationSequences(std::string& 
 
 	return opcodeSequences;
 }
-
-
-
-
 
 
 

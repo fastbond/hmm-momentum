@@ -1,7 +1,9 @@
 #include "schedule.h"
 
 /*
-TODO: Re-implement the old previously tested schedules with new structure
+TODO: 
+	-Re-implement the old previously tested schedules with new structure
+	-Combine skip, disable, and variants into a single schedule
 */
 
 

@@ -265,7 +265,7 @@ void classifyMalware() {
 	double smoothing = 0.001;
 	int iters = 300;
 	int min_file_size = 1;
-	Initialization init = Initialization::Random;
+	Initialization init = Initialization::random;
 
 	//Experiment settings
 	std::string description = "extra/malicia/varyN/TEST/";//"extended/test/multiIter/15 families/5 iters/";
