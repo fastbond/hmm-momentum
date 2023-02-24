@@ -361,58 +361,6 @@ void HMM::updateB(std::vector<std::vector<double>> numers, std::vector<double> d
 
 
 
-/*
- *  Train overloads
- */
-std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks) {
-	return train(observations, max_iters, momentum, smoothing, callbacks, true, true, true);
-}
-
-
-std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum, double smoothing) {
-	std::vector<Callback*> c;
-	return train(observations, max_iters, momentum, smoothing, c);
-}
-
-
-std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum) {
-	std::vector<Callback*> c;
-	return train(observations, max_iters, momentum, 0, c);
-}
-
-
-/*
- *  Train overloads, single sequence
- */
-std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks, bool trainA, bool trainB, bool trainPi) {
-	std::vector<std::vector<int>> O;
-	O.push_back(observations);
-	return train(O, max_iters, momentum, smoothing, callbacks, trainA, trainB, trainPi);
-}
-
-
-std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks) {
-	std::vector<std::vector<int>> O;
-	O.push_back(observations);
-	return train(O, max_iters, momentum, smoothing, callbacks, true, true, true);
-}
-
-
-std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing) {
-	std::vector<Callback*> c;
-	return train(observations, max_iters, momentum, smoothing, c, true, true, true);
-}
-
-
-std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum) {
-	return train(observations, max_iters, momentum, 0);
-}
-
-
-
-
-
-
 
 //forward pass
 void HMM::alphaPass(const std::vector<int>& O, int T) {
@@ -557,6 +505,55 @@ double HMM::normalizedScore(const std::vector<int>& O) {
 	return score(O) / T;
 }
 
+
+
+
+/*
+ *  Train overloads
+ */
+std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks) {
+	return train(observations, max_iters, momentum, smoothing, callbacks, true, true, true);
+}
+
+
+std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum, double smoothing) {
+	std::vector<Callback*> c;
+	return train(observations, max_iters, momentum, smoothing, c);
+}
+
+
+std::vector<double> HMM::train(std::vector<std::vector<int>>& observations, unsigned int max_iters, Momentum& momentum) {
+	std::vector<Callback*> c;
+	return train(observations, max_iters, momentum, 0, c);
+}
+
+
+/*
+ *  Train overloads, single sequence
+ */
+std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks, bool trainA, bool trainB, bool trainPi) {
+	std::vector<std::vector<int>> O;
+	O.push_back(observations);
+	return train(O, max_iters, momentum, smoothing, callbacks, trainA, trainB, trainPi);
+}
+
+
+std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing, std::vector<Callback*>& callbacks) {
+	std::vector<std::vector<int>> O;
+	O.push_back(observations);
+	return train(O, max_iters, momentum, smoothing, callbacks, true, true, true);
+}
+
+
+std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum, double smoothing) {
+	std::vector<Callback*> c;
+	return train(observations, max_iters, momentum, smoothing, c, true, true, true);
+}
+
+
+std::vector<double> HMM::train(std::vector<int>& observations, unsigned int max_iters, Momentum& momentum) {
+	return train(observations, max_iters, momentum, 0);
+}
 
 
 
